@@ -34,7 +34,7 @@ namespace BucketList
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
         /// This parameter is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             // TODO: Prepare page for display here.
 
@@ -43,6 +43,19 @@ namespace BucketList
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
+
+            var BucketItems = await App.DataModel.GetBucketItems();
+            this.DataContext = BucketItems;
+        }
+
+        private void AddItemButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AddItem));
+        }
+
+        private void AboutButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AboutPage));
         }
     }
 }

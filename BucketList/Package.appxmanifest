@@ -1,41 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-
-  <Identity Name="c3cf89fd-74da-41bb-9454-acb3bbeb47d2"
-            Publisher="CN=Mustafa"
-            Version="1.0.0.0" />
-
-  <mp:PhoneIdentity PhoneProductId="c3cf89fd-74da-41bb-9454-acb3bbeb47d2" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
-
+  <Identity Name="29388AlaaElden.BucketListy" Publisher="CN=E58C6F8A-7EE6-4D09-A9B5-7CBEF6F1B640" Version="1.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="124096eb-c066-4b6d-8412-32ca64ebfc3f" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>BucketList</DisplayName>
-    <PublisherDisplayName>Mustafa</PublisherDisplayName>
+    <DisplayName>Bucket Listy</DisplayName>
+    <PublisherDisplayName>AlaaElden</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
-
   <Prerequisites>
     <OSMinVersion>6.3.1</OSMinVersion>
     <OSMaxVersionTested>6.3.1</OSMaxVersionTested>
   </Prerequisites>
-  
   <Resources>
-    <Resource Language="x-generate"/>
+    <Resource Language="x-generate" />
   </Resources>
-
   <Applications>
-    <Application Id="App"
-        Executable="$targetnametoken$.exe"
-        EntryPoint="BucketList.App">
-        <m3:VisualElements
-            DisplayName="BucketList"
-            Square150x150Logo="Assets\Logo.png"
-            Square44x44Logo="Assets\SmallLogo.png"
-            Description="BucketList"
-            ForegroundText="light"
-            BackgroundColor="transparent">
-            <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png"/>
-            <m3:SplashScreen Image="Assets\SplashScreen.png"/>
-        </m3:VisualElements>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="BucketList.App">
+      <m3:VisualElements DisplayName="Bucket Listy" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Bucket List is your friend who remembers what you want and fantasize about, tell him your dreams and he'll save it for you till you get them done." ForegroundText="light" BackgroundColor="white">
+        <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
+          <m3:ShowNameOnTiles>
+            <m3:ShowOn Tile="square150x150Logo" />
+            <m3:ShowOn Tile="wide310x150Logo" />
+          </m3:ShowNameOnTiles>
+        </m3:DefaultTile>
+        <m3:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="white" />
+        <m3:InitialRotationPreference>
+          <m3:Rotation Preference="portrait" />
+          <m3:Rotation Preference="landscape" />
+          <m3:Rotation Preference="landscapeFlipped" />
+        </m3:InitialRotationPreference>
+      </m3:VisualElements>
     </Application>
   </Applications>
   <Capabilities>

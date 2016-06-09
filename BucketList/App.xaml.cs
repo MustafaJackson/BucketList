@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BucketList.DataModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,8 @@ namespace BucketList
     /// </summary>
     public sealed partial class App : Application
     {
+        public static DataSource DataModel;
+
         private TransitionCollection transitions;
 
         /// <summary>
@@ -35,6 +38,7 @@ namespace BucketList
         {
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+            DataModel = new DataSource();
         }
 
         /// <summary>

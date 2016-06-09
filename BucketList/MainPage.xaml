@@ -5,10 +5,44 @@
     xmlns:local="using:BucketList"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:valueconverter="using:BucketList.ValueConverters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <valueconverter:IsCompleteToBooleanConverter x:Key="IsCompleteToBooleanConverter" />
+        <valueconverter:CompletedDatesToIntegerConverter x:Key="CompletedDatesToIntegerConverter" />
+    </Page.Resources>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Add" Label="Add Goal" x:Name="AddItemButton" Click="AddItemButton_Click"/>
+            <AppBarButton Icon="Document" Label="About" x:Name="AboutButton" Click="AboutButton_Click" />
+        </CommandBar>
+    </Page.BottomAppBar>
 
-    <Grid>
-
-    </Grid>
+    <ScrollViewer>
+        <Grid Margin="12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+<!--Title and description-->
+            <TextBlock Grid.Row="0" Style="{StaticResource TitleTextBlockStyle}" FontSize="36" Text="Bucket List" Margin="20" TextAlignment="Center" />
+            <TextBlock Grid.Row="1" Style="{StaticResource TitleTextBlockStyle}" Margin="20" Text="list your goals and track them in your bucket" TextWrapping="Wrap" />
+<!--Grid holding the data, the Bucket items-->
+            <Grid Grid.Row="2" Margin="20,20,20,0">
+                <Grid.Resources>
+                    <DataTemplate x:Name="dataTemplate">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Name}" FontSize="24" />
+                            <TextBlock Text="{Binding Description}" FontSize="18" />
+                            <Button x:Name="CompletedButton" Content="Been there, Done that" Command="{Binding CompletedCommand}" CommandParameter="{Binding}" IsEnabled="{Binding Dates, Converter={StaticResource IsCompleteToBooleanConverter}}" />
+                            <!-- <ProgressBar Value="{Binding Dates,Converter={StaticResource CompletedDatesToIntegerConverter}}" Maximum="30" Minimum="0" /> -->
+                        </StackPanel>
+                    </DataTemplate>
+                </Grid.Resources>
+                <ItemsControl x:Name="itemsControl" ItemsSource="{Binding}" ItemTemplate="{StaticResource dataTemplate}" />
+            </Grid>
+        </Grid>
+    </ScrollViewer>
 </Page>
